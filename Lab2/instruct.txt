@@ -1,0 +1,16 @@
+error: docker: Error response from daemon: driver failed programming external connectivity on endpoint laughing_burnell 
+(bb242b2ca4d67eba76e79474fb36bb5125708ebdabd7f45c8eaf16caaabde9dd): Bind for 127.0.0.1:3000 failed: port is already allocated.
+The error occurred because you aren’t able to start the new container while your old container is still running. The reason is
+that the old container is already using the host’s port 3000 and only one process on the machine (containers included) can listen
+to a specific port. To fix this, you need to remove the old container.
+-> có nghĩa là port đó đã được chạy rồi. Nếu có gắng chạy trên port sẽ có lỗi. Để khắc phục điều này, chúng ta cần xóa container cũ đi,
+có thể dụng docker desktop để xóa 1 cách đơn giản, hoặc giùm lệnh trên cmd.
+1. xem id container: docker ps (ví dụ container đó có id là: caljs123llas)
+2. stop container: docker stop caljs123llas
+3. remove container: docker rm caljs123llas
+
+hoặc gộp 2 bước 2 và 3: docker rm -f caljs123llas
+-f: f là force có nghĩa là bắt buộc. Nếu container đang run thì bắt buộc dừng lại.
+
+You can stop and remove a container in a single command by adding the force flag to the docker rm command.
+For example: docker rm -f <the-container-id>
