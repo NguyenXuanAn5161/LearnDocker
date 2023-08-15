@@ -1,0 +1,57 @@
+Share the application
+Now that you’ve built an image, you can share it. To share Docker images, you have to use a Docker registry.
+The default registry is Docker Hub and is where all of the images you’ve used have come from.
+Create a repository
+To push an image, you first need to create a repository on Docker Hub.
+1. Sign up or Sign in to Docker Hub.
+2. Select the Create Repository button.
+3. For the repository name, use getting-started. Make sure the Visibility is Public.
+4. Select Create.
+
+In the following image, you can see an example Docker command from Docker Hub. This command will push to this repository.
+
+Push the image
+1. In the command line, run the docker push command that you see on Docker Hub.
+Note that your command will have your Docker ID, not “docker”.
+# docker push docker/getting-started
+# The push refers to repository [docker.io/docker/getting-started]
+# An image does not exist locally with the tag: docker/getting-started
+2. Sign in to Docker Hub using the command docker login -u YOUR-USER-NAME
+3. Use the docker tag command to give the getting-started image a new name. Replace YOUR-USER-NAME with your Docker ID.
+4. Now run the docker push command again. If you’re copying the value from Docker Hub, you can drop the tagname part,
+as you didn’t add a tag to the image name. If you don’t specify a tag, Docker uses a tag called latest.
+docker push YOUR-USER-NAME/getting-started
+
+CHIA SẼ MỘT ỨNG DỤNG:
+Chúng ta có 1 ứng dụng, sau đó chia sẽ nó. Chia sẽ lên Dockerhub-nơi chứa các image.
+Để push 1 image lên -> tạo một repo tên dockerhub
+1. Đăng ký và đăng nhập dockerhub
+2. Tạo repo -> đặt tên là 'getting-started'. Public.
+
+Lệnh ví dụ đẩy image lên dockerhub: docker push docker/getting-started:tagname
+
+PUSH IMAGE LÊN DOCKERHUB:
+1. Push image lên dockerhub: `docker push docker/getting-started` thay docker = your dockerid -> nhưng sẽ bị lỗi vì nó không tìm thấy
+file có tên docker/getting-started
+2. Sign in to Docker Hub using the command docker login -u YOUR-USER-NAME -- sử dụng docker desktop thì không cần.
+3. Sử dụng lệnh thẻ docker để đặt tên mới cho image. Thay YOUR-USER-NAME bằng Docker ID của bạn.
+docker tag getting-started YOUR-USER-NAME/getting-started
+4. Chạy lệnh docker push. docker push YOUR-USER-NAME/getting-started
+
+CHẠY IMAGE TRÊN MỘT PHIÊN BẢN MỚI
+Sử dụng play with Docker do trang chủ của Docker cung cấp. Đăng nhập bình thường và chọn and new instance.
+Sử dụng docker run để run nó sau khi nó đã pull image về: docker run -dp 0.0.0.0:3000:3000 YOUR-USER-NAME/getting-started
+sau đó chọn open port và nhập 3000 để hiển thị app.
+
+Tip:
+    You may have noticed that this command binds the port mapping to a different IP address. Previous docker run commands published ports
+to 127.0.0.1:3000 on the host. This time, you’re using 0.0.0.0.
+    Binding to 127.0.0.1 only exposes a container’s ports to the loopback interface. Binding to 0.0.0.0, however, exposes the container’s
+port on all interfaces of the host, making it available to the outside world.
+    For more information about how port mapping works, see Networking.
+
+Note:
+để push 1 image lên dockerhub thì dĩ nhiên phải có sẵn 1 image.
+hầu như lab 3 không có lỗi. Lỗi do bài của trang chủ cung cấp là `docker push docker/getting-started` khi chạy câu lệnh này nó sẽ không
+tìm thấy được image của mình. Nó sẽ hiểu "docker/getting-started" là tag
+vì thế chúng ta sẽ sửa thành `docker tag getting-started YOUR-USER-NAME/getting-started`.
