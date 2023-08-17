@@ -9,14 +9,14 @@ Nó không được lưu trữ lại cho container khác sử dụng.
 
 Khi container bị loại bỏ, bạn sẽ mất dữ liệu đã chạy trước đó trên container đó.
 Để khắc phục điều này, bạn sẽ sử dụng khối lưu trữ (volumes) để lưu trữ dữ liệu.
------------
+
 |Container|
------------
+
     | Container sẽ tương tác với dữ liệu được lưu trong volumes
     V và sau khi loại bỏ container này, dữ liệu cũng sẽ không bị mất.
----------
+
 |Volumes| Sau này volumes sẽ bằng 1 cách nào đó (Chưa học tới), sẽ tương tác được với dữ liệu từ DB
----------
+
 
 Đọc thêm Persist the todo data trên trang chủ để biết thêm chi tiết
 https://docs.docker.com/get-started/05_persisting_data/#persist-the-todo-data
